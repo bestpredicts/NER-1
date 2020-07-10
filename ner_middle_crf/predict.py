@@ -80,16 +80,9 @@ if __name__ == '__main__':
     logging.info('- done.')
 
     logging.info("Starting prediction...")
-    if mode == 'test':
-        # Create the input data pipeline
-        logging.info("Loading the dataset...")
-        test_loader = dataloader.get_dataloader(data_sign='test')
-        logging.info("- done.")
-        predict(model, test_loader, params, mode=mode)
-    elif mode == 'val':
-        # Create the input data pipeline
-        logging.info("Loading the dataset...")
-        val_loader = dataloader.get_dataloader(data_sign='val')
-        logging.info("- done.")
-        predict(model, val_loader, params, mode=mode)
+    # Create the input data pipeline
+    logging.info("Loading the dataset...")
+    test_loader = dataloader.get_dataloader(data_sign=mode)
+    logging.info("- done.")
+    predict(model, test_loader, params, mode)
     logging.info('- done.')

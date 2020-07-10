@@ -138,6 +138,7 @@ class CRFLayer(nn.Module):
             scores_t = scores.unsqueeze(1) + self.transition.unsqueeze(0)  # (batch_size, tag_size, tag_size)
             # max along current_tag to obtain: next_tag score, current_tag pointer
             scores_t, pointer = torch.max(scores_t, -1)  # (batch_size, tag_size), (batch_size, tag_size)
+            # add emit
             scores_t += feat
             pointers.append(pointer)
             mask_t = mask[t].unsqueeze(-1)  # (batch_size, 1)

@@ -63,7 +63,7 @@ def train(model, data_iterator, optimizer, params):
             loss = loss.mean()  # mean() to average on multi-gpu.
         # 梯度累加
         if params.gradient_accumulation_steps > 1:
-            loss = loss / args.gradient_accumulation_steps
+            loss = loss / params.gradient_accumulation_steps
 
         # clear previous gradients, compute gradients of all variables wrt loss
         model.zero_grad()
@@ -76,7 +76,7 @@ def train(model, data_iterator, optimizer, params):
         # loss_adv.backward()
         # fgm.restore()
 
-        if (step + 1) % args.gradient_accumulation_steps == 0:
+        if (step + 1) % params.gradient_accumulation_steps == 0:
             # performs updates using calculated gradients
             optimizer.step()
             optimizer.zero_grad()

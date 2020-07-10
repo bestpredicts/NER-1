@@ -31,9 +31,6 @@ parser.add_argument('--epoch_num', required=True, type=int,
                     help="指定epoch_num")
 parser.add_argument('--multi_gpu', action='store_true', help="是否多GPU")
 
-
-
-
 def train(model, data_iterator, optimizer, params):
     """Train the model one epoch
     """

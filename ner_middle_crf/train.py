@@ -1,5 +1,8 @@
 # -!- coding: utf-8 -!-
 """train with valid"""
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 import random
 
 import torch
@@ -7,7 +10,7 @@ from optimization import BertAdam
 
 # 参数解析器
 import argparse
-import os
+
 import logging
 from tqdm import trange
 
@@ -28,8 +31,7 @@ parser.add_argument('--epoch_num', required=True, type=int,
                     help="指定epoch_num")
 parser.add_argument('--multi_gpu', action='store_true', help="是否多GPU")
 
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
+
 
 
 def train(model, data_iterator, optimizer, params):

@@ -1,6 +1,7 @@
 # -!- coding: utf-8 -!-
 """train with valid"""
 import os
+
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 import random
@@ -30,6 +31,7 @@ parser.add_argument('--restore_file', default=None,
 parser.add_argument('--epoch_num', required=True, type=int,
                     help="指定epoch_num")
 parser.add_argument('--multi_gpu', action='store_true', help="是否多GPU")
+
 
 def train(model, data_iterator, optimizer, params):
     """Train the model one epoch
@@ -64,8 +66,6 @@ def train(model, data_iterator, optimizer, params):
         if params.gradient_accumulation_steps > 1:
             loss = loss / params.gradient_accumulation_steps
 
-        # clear previous gradients, compute gradients of all variables wrt loss
-        model.zero_grad()
         # back-prop
         loss.backward()
 
@@ -78,7 +78,7 @@ def train(model, data_iterator, optimizer, params):
         if (step + 1) % params.gradient_accumulation_steps == 0:
             # performs updates using calculated gradients
             optimizer.step()
-            optimizer.zero_grad()
+            model.zero_grad()
 
         # update the average loss
         loss_avg.update(loss.item() * params.gradient_accumulation_steps)

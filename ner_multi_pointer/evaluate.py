@@ -19,12 +19,10 @@ def evaluate(args, model, eval_dataloader, params):
     gold_result = []
 
     # get data
-    for input_ids, input_mask, start_pos, end_pos in eval_dataloader:
-        # to device
-        input_ids = input_ids.to(params.device)
-        input_mask = input_mask.to(params.device)
-        start_pos = start_pos.to(params.device)
-        end_pos = end_pos.to(params.device)
+    for batch in eval_dataloader:
+        # fetch the next training batch
+        batch = tuple(t.to(params.device) for t in batch)
+        input_ids, input_mask, start_pos, end_pos = batch
 
         with torch.no_grad():
             # get loss

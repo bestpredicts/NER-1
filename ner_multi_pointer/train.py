@@ -67,7 +67,7 @@ def train(model, data_iterator, optimizer, params):
             model.zero_grad()
 
         # update the average loss
-        loss_avg.update(loss.item())
+        loss_avg.update(loss.item() * params.gradient_accumulation_steps)
         # 右边第一个0为填充数，第二个5为数字个数为5位，第三个3为小数点有效数为3，最后一个f为数据类型为float类型。
         t.set_postfix(loss='{:05.3f}'.format(loss_avg()))
 

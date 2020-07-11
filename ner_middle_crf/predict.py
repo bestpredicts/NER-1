@@ -83,6 +83,4 @@ if __name__ == '__main__':
     # Create the input data pipeline
     logging.info("Loading the dataset...")
     test_loader = dataloader.get_dataloader(data_sign=mode)
-    logging.info("- done.")
     predict(model, test_loader, params, mode)
-    logging.info('- done.')

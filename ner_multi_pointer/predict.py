@@ -102,7 +102,6 @@ if __name__ == '__main__':
     logging.info('- done.')
 
     logging.info("Starting prediction...")
-    logging.info("Starting prediction...")
     # Create the input data pipeline
     logging.info("Loading the dataset...")
     loader = dataloader.get_dataloader(data_sign=mode)

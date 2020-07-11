@@ -43,7 +43,7 @@ def train(model, data_iterator, optimizer, params):
     # Use tqdm for progress bar
     # one epoch
     t = trange(params.train_steps)
-    for _ in t:
+    for step, _ in enumerate(t):
         # fetch the next training batch
         batch = next(iter(data_iterator))
         batch = tuple(t.to(params.device) for t in batch)
@@ -58,13 +58,13 @@ def train(model, data_iterator, optimizer, params):
         if params.gradient_accumulation_steps > 1:
             loss = loss / args.gradient_accumulation_steps
 
-        # clear previous gradients, compute gradients of all variables wrt loss
-        model.zero_grad()
         # back-prop
         loss.backward()
 
-        # performs updates using calculated gradients
-        optimizer.step()
+        if (step + 1) % params.gradient_accumulation_steps == 0:
+            # performs updates using calculated gradients
+            optimizer.step()
+            model.zero_grad()
 
         # update the average loss
         loss_avg.update(loss.item())

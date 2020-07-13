@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0c6cd672-a69c-493d-b978-a5f65ce0d082" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ner_zen_lstm" />
+    <property name="last_opened_file_path" value="D:/论文及参考资料/2.NER/Word augment/LexiconAugmentedNER-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -48,7 +47,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.data_analyze">
+    <configuration name="data_analyze" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ner_middle_crf" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_analyze.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="tt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ner_middle_crf" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,6 +94,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.data_analyze" />
         <item itemvalue="Python.tt" />
       </list>
     </recent_temporary>
@@ -97,7 +119,8 @@
       <workItem from="1594365422677" duration="4011000" />
       <workItem from="1594436235438" duration="3660000" />
       <workItem from="1594453730906" duration="796000" />
-      <workItem from="1594456116748" duration="1524000" />
+      <workItem from="1594456116748" duration="2215000" />
+      <workItem from="1594545430575" duration="2534000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1594364122320</created>
@@ -173,6 +196,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="修改predict.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ner_middle_crf$data_analyze.coverage" NAME="data_analyze Coverage Results" MODIFIED="1594551488519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ner_middle_crf$tt.coverage" NAME="tt Coverage Results" MODIFIED="1594027481304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

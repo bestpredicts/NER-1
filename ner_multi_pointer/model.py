@@ -118,9 +118,17 @@ class BertMultiPointer(BertPreTrainedModel):
         start_logits = self.start_outputs(sequence_output)  # batch x seq_len x tag_size
         end_logits = self.end_outputs(sequence_output)  # batch x seq_len x tag_size
 
+        # expand mask
+        expand_mask = attention_mask.unsqueeze(-1).expand(-1, -1, self.tag_size)  # (batch_size, seq_len , tag_size)
         # mask
-        start_logits *= attention_mask.unsqueeze(-1)
-        end_logits *= attention_mask.unsqueeze(-1)
+        start_logits = torch.where(expand_mask == 0,
+                                   torch.full(size=expand_mask.size(), fill_value=-10000),
+                                   start_logits
+                                   )
+        end_logits = torch.where(expand_mask == 0,
+                                 torch.full(size=expand_mask.size(), fill_value=-10000),
+                                 end_logits
+                                 )
 
         # train
         if start_positions is not None and end_positions is not None:

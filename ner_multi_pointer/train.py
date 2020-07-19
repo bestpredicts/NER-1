@@ -207,10 +207,14 @@ if __name__ == '__main__':
     logging.info("device: {}".format(params.device))
 
     # Prepare model
+    logging.info('Init pre-train model...')
     config = RobertaConfig.from_pretrained(params.bert_model_dir / 'config.json', output_hidden_states=True)
     model = BertMultiPointer.from_pretrained(params.bert_model_dir,
                                              config=config, params=params)
     model.to(params.device)
+    if params.n_gpu > 1 and args.multi_gpu:
+        model = torch.nn.DataParallel(model)
+    logging.info('-done')
 
     # Train and evaluate the model
     logging.info("Starting training for {} epoch(s)".format(args.epoch_num))

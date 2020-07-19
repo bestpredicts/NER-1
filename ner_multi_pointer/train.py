@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """train with valid"""
 import os
+
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 import torch
@@ -55,7 +56,7 @@ def train(model, data_iterator, optimizer, params):
             loss = loss.mean()  # mean() to average on multi-gpu.
         # 梯度累加
         if params.gradient_accumulation_steps > 1:
-            loss = loss / args.gradient_accumulation_steps
+            loss = loss / params.gradient_accumulation_steps
 
         # back-prop
         loss.backward()

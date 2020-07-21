@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pretrain_bert_based_model" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -122,6 +122,7 @@
       <workItem from="1594456116748" duration="2215000" />
       <workItem from="1594545430575" duration="2534000" />
       <workItem from="1595147533457" duration="2078000" />
+      <workItem from="1595160853851" duration="3122000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1594364122320</created>
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594437151566</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改predict.py">
+      <created>1595160953973</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1595160953973</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

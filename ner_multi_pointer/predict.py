@@ -101,8 +101,9 @@ if __name__ == '__main__':
     utils.load_checkpoint(os.path.join(params.model_dir, args.restore_file + '.pth.tar'), model)
     logging.info('- done.')
 
-    logging.info("Starting prediction...")
     # Create the input data pipeline
     logging.info("Loading the dataset...")
     loader = dataloader.get_dataloader(data_sign=mode)
+
+    logging.info("Starting prediction...")
     predict(model, loader, params, mode)

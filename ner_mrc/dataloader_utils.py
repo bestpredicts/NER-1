@@ -163,7 +163,7 @@ def convert_examples_to_features(params, examples, tokenizer, pad_sign=True):
         segment_ids.append(0)
         start_pos.append(0)
         end_pos.append(0)
-        input_mask.append(0)
+        input_mask.append(1)
 
         # query
         input_tokens.extend(query_tokens)
@@ -177,7 +177,7 @@ def convert_examples_to_features(params, examples, tokenizer, pad_sign=True):
         segment_ids.append(0)
         start_pos.append(0)
         end_pos.append(0)
-        input_mask.append(0)
+        input_mask.append(1)
 
         # context
         input_tokens.extend(context_doc_tokens)
@@ -191,7 +191,7 @@ def convert_examples_to_features(params, examples, tokenizer, pad_sign=True):
         segment_ids.append(1)
         start_pos.append(0)
         end_pos.append(0)
-        input_mask.append(0)
+        input_mask.append(1)
 
         # token to id
         input_ids = tokenizer.convert_tokens_to_ids(input_tokens)

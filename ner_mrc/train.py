@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """train with valid"""
+import os
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 
 import torch
 
 # 参数解析器
 import random
 import argparse
-import os
 import logging
 from tqdm import trange
 
@@ -27,9 +30,6 @@ parser.add_argument('--epoch_num', required=True, type=int,
                     help="指定epoch_num")
 parser.add_argument('--multi_gpu', action='store_true', help="是否多GPU")
 
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
-
 
 def train(model, data_iterator, optimizer, params):
     """Train the model one epoch
@@ -43,7 +43,7 @@ def train(model, data_iterator, optimizer, params):
     # Use tqdm for progress bar
     # one epoch
     t = trange(params.train_steps)
-    for _ in t:
+    for step, _ in enumerate(t):
         # fetch the next training batch
         batch = next(iter(data_iterator))
         batch = tuple(t.to(params.device) for t in batch)
@@ -52,20 +52,20 @@ def train(model, data_iterator, optimizer, params):
         # get loss
         loss = model(input_ids, token_type_ids=segment_ids, attention_mask=input_mask,
                      start_positions=start_pos, end_positions=end_pos)
+
+        if params.n_gpu > 1 and args.multi_gpu:
+            loss = loss.mean()  # mean() to average on multi-gpu.
         # 梯度累加
         if params.gradient_accumulation_steps > 1:
             loss = loss / args.gradient_accumulation_steps
 
-        if params.n_gpu > 1 and args.multi_gpu:
-            loss = loss.mean()  # mean() to average on multi-gpu.
-
-        # clear previous gradients, compute gradients of all variables wrt loss
-        model.zero_grad()
         # back-prop
         loss.backward()
 
-        # performs updates using calculated gradients
-        optimizer.step()
+        if (step + 1) % params.gradient_accumulation_steps == 0:
+            # performs updates using calculated gradients
+            optimizer.step()
+            model.zero_grad()
 
         # update the average loss
         loss_avg.update(loss.item())

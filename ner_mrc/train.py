@@ -57,7 +57,7 @@ def train(model, data_iterator, optimizer, params):
             loss = loss.mean()  # mean() to average on multi-gpu.
         # 梯度累加
         if params.gradient_accumulation_steps > 1:
-            loss = loss / args.gradient_accumulation_steps
+            loss = loss / params.gradient_accumulation_steps
 
         # back-prop
         loss.backward()

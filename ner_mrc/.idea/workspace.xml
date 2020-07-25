@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="" />
+    <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,8 @@
       <workItem from="1595662244601" duration="4543000" />
       <workItem from="1595680331512" duration="31000" />
       <workItem from="1595682111900" duration="114000" />
+      <workItem from="1595682681716" duration="30000" />
+      <workItem from="1595683679307" duration="569000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>
@@ -82,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595682178193</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修改weight_decay">
+      <created>1595682707377</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1595682707377</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +116,7 @@
     <MESSAGE value="修改梯度累加" />
     <MESSAGE value="修改input mask" />
     <MESSAGE value="修改predict.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改predict.py" />
+    <MESSAGE value="修改weight_decay" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改weight_decay" />
   </component>
 </project>

@@ -52,6 +52,7 @@
       <workItem from="1594277887144" duration="3294000" />
       <workItem from="1595662244601" duration="4543000" />
       <workItem from="1595680331512" duration="31000" />
+      <workItem from="1595682111900" duration="114000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>
@@ -74,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595680359970</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修改predict.py">
+      <created>1595682178193</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595682178193</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +104,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改梯度累加" />
     <MESSAGE value="修改input mask" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改input mask" />
+    <MESSAGE value="修改predict.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改predict.py" />
   </component>
 </project>

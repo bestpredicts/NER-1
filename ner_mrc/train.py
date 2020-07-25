@@ -100,20 +100,20 @@ def train_and_evaluate(model, params, restore_file=None):
         # pretrain model param
         # 衰减
         {'params': [p for n, p in param_pre if not any(nd in n for nd in no_decay)],
-         'weight_decay_rate': params.weight_decay_rate, 'lr': params.fin_tuning_lr
+         'weight_decay': params.weight_decay_rate, 'lr': params.fin_tuning_lr
          },
         # 不衰减
         {'params': [p for n, p in param_pre if any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.0, 'lr': params.fin_tuning_lr
+         'weight_decay': 0.0, 'lr': params.fin_tuning_lr
          },
         # middle model
         # 衰减
         {'params': [p for n, p in param_middle if not any(nd in n for nd in no_decay)],
-         'weight_decay_rate': params.weight_decay_rate, 'lr': params.middle_lr
+         'weight_decay': params.weight_decay_rate, 'lr': params.middle_lr
          },
         # 不衰减
         {'params': [p for n, p in param_middle if any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.0, 'lr': params.middle_lr
+         'weight_decay': 0.0, 'lr': params.middle_lr
          }
     ]
     num_train_optimization_steps = len(train_loader) // params.gradient_accumulation_steps * args.epoch_num

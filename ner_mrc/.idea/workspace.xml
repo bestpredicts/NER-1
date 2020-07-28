@@ -57,6 +57,8 @@
       <workItem from="1595682111900" duration="114000" />
       <workItem from="1595682681716" duration="30000" />
       <workItem from="1595683679307" duration="569000" />
+      <workItem from="1595684346306" duration="298000" />
+      <workItem from="1595762805738" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>
@@ -93,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595682707377</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="修改weight_decay">
+      <created>1595684362732</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1595684362732</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

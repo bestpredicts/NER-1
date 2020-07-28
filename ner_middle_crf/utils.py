@@ -149,6 +149,9 @@ def set_logger(save=False, log_path=None):
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
+    if not os.path.exists(os.path.dirname(log_path)):
+        os.mkdir(os.path.dirname(log_path))
+
     if not logger.handlers:
         if save:
             # Logging to a file

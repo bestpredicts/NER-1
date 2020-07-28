@@ -228,7 +228,7 @@ class RTransformer(nn.Module):
     The overall model
     """
 
-    def __init__(self, d_model, rnn_type, ksize, n_level, n, h, dropout):
+    def __init__(self, d_model, rnn_type, ksize, n_level, tag_size, n, h, dropout):
         """
         :param d_model: num_head*head_dim
         :param rnn_type: 'rnn','lstm','gru'
@@ -250,6 +250,8 @@ class RTransformer(nn.Module):
             layers.append(
                 Block(d_model, d_model, rnn_type, ksize, N=N, h=h, dropout=dropout))
         self.forward_net = nn.Sequential(*layers)
+        
+        self.hidden2tag = nn.Linear(d_model, tag_size)
 
     def forward(self, x):
         """
@@ -257,4 +259,6 @@ class RTransformer(nn.Module):
         :return:
         """
         x = self.forward_net(x)
+        x = x * mask.unsqueeze(-1)
+        x = self.hidden2tag(x) * mask.unsqueeze(-1)  # (bs, seq_len, tag_size)
         return x

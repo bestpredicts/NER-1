@@ -53,7 +53,7 @@ class Params:
         # 读取保存的data
         self.data_cache = True
         self.train_batch_size = 20
-        self.dev_batch_size = 8
+        self.val_batch_size = 8
         self.test_batch_size = 128
 
         # patience strategy

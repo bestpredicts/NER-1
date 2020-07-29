@@ -19,7 +19,7 @@ class NERDataLoader(object):
         self.params = params
 
         self.train_batch_size = params.train_batch_size
-        self.dev_batch_size = params.dev_batch_size
+        self.val_batch_size = params.dev_batch_size
         self.test_batch_size = params.test_batch_size
 
         self.data_dir = params.data_dir

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,6 +60,7 @@
       <workItem from="1595683679307" duration="569000" />
       <workItem from="1595684346306" duration="298000" />
       <workItem from="1595762805738" duration="23000" />
+      <workItem from="1596009780609" duration="662000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>

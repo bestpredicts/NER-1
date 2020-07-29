@@ -6,6 +6,7 @@ import argparse
 import random
 import logging
 import os
+from tqdm import tqdm
 
 import torch
 
@@ -34,10 +35,10 @@ def predict(model, data_iterator, params, mode):
 
     pred_tags = []
 
-    for input_ids, input_mask, _ in data_iterator:
+    for batch in tqdm(data_iterator, unit='Batch'):
         # to device
-        input_ids = input_ids.to(params.device)
-        input_mask = input_mask.to(params.device)
+        batch = tuple(t.to(params.device) for t in batch)
+        input_ids, input_mask, _ = batch
         # inference
         with torch.no_grad():
             batch_output = model(input_ids, attention_mask=input_mask)

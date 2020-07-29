@@ -253,7 +253,7 @@ class RTransformer(nn.Module):
         
         self.hidden2tag = nn.Linear(d_model, tag_size)
 
-    def forward(self, x):
+    def forward(self, x, mask):
         """
         :param x: (batch_size, seq_len, d)
         :return:

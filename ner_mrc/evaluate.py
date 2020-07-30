@@ -7,6 +7,7 @@ import logging
 import torch
 
 import utils
+from utils import IO2QUERY
 from metrics_utils import mrc2bio
 from metrics import classification_report, f1_score, accuracy_score
 
@@ -49,6 +50,7 @@ def evaluate(args, model, eval_dataloader, params):
         # gold label
         start_pos = start_pos.to("cpu").numpy().tolist()
         end_pos = end_pos.to("cpu").numpy().tolist()
+        input_mask = input_mask.to('cpu').numpy().tolist()
         ner_cate = ner_cate.to("cpu").numpy().tolist()
 
         # predict label
@@ -59,12 +61,20 @@ def evaluate(args, model, eval_dataloader, params):
         cate_idx2label = {idx: value for idx, value in enumerate(params.label_list)}
 
         # get bio result
-        for start_p, end_p, start_g, end_g, ner_cate_s in zip(start_label, end_label,
-                                                              start_pos, end_pos,
-                                                              ner_cate):
+        for start_p, end_p, start_g, end_g, input_mask_s, ner_cate_s in zip(start_label, end_label,
+                                                                            start_pos, end_pos,
+                                                                            input_mask, ner_cate):
             ner_cate_str = cate_idx2label[ner_cate_s]
-            pre_bio_labels = mrc2bio(start_p, end_p, ner_cate_str)
-            gold_bio_labels = mrc2bio(start_g, end_g, ner_cate_str)
+            # 问题长度
+            q_len = len(IO2QUERY[ner_cate_str])
+            # 有效长度
+            act_len = sum(input_mask_s[q_len + 2:-1])
+            pre_bio_labels = mrc2bio(start_p[q_len + 2:q_len + 2 + act_len],
+                                     end_p[q_len + 2:q_len + 2 + act_len],
+                                     ner_cate_str)
+            gold_bio_labels = mrc2bio(start_g[q_len + 2:q_len + 2 + act_len],
+                                      end_g[q_len + 2:q_len + 2 + act_len],
+                                      ner_cate_str)
             pre_result.append(pre_bio_labels)
             gold_result.append(gold_bio_labels)
 

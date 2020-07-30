@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0c6cd672-a69c-493d-b978-a5f65ce0d082" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Competitions/ner4ex/ner_nezha_lstm_crf" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -128,7 +126,7 @@
       <workItem from="1595667805691" duration="614000" />
       <workItem from="1595938192988" duration="5000" />
       <workItem from="1595941186578" duration="1861000" />
-      <workItem from="1596008144972" duration="4409000" />
+      <workItem from="1596008144972" duration="5156000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1594364122320</created>
@@ -214,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596010780846</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="修改predict.py">
+      <created>1596013765409</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1596013765409</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,12 +240,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改梯度累加" />
-    <MESSAGE value="修改predict.py" />
     <MESSAGE value="修改rtrans" />
     <MESSAGE value="修改set_logger" />
     <MESSAGE value="修改val" />
     <MESSAGE value="修改evaluate.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改evaluate.py" />
+    <MESSAGE value="修改predict.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改predict.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ner_middle_crf$data_analyze.coverage" NAME="data_analyze Coverage Results" MODIFIED="1594551488519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

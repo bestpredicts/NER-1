@@ -13,7 +13,7 @@ from utils import initial_parameter
 class BertQueryNER(BertPreTrainedModel):
     def __init__(self, config, params):
         super(BertQueryNER, self).__init__(config)
-        # nezha layer
+        # pretrain model layer
         self.bert = BertModel(config)
 
         # start and end position layer
@@ -73,10 +73,6 @@ class BertQueryNER(BertPreTrainedModel):
         start_logits = self.start_outputs(sequence_output)  # batch x seq_len x 2
         end_logits = self.end_outputs(sequence_output)  # batch x seq_len x 2
 
-        # mask
-        start_logits *= attention_mask.unsqueeze(-1)
-        end_logits *= attention_mask.unsqueeze(-1)
-
         # train
         if start_positions is not None and end_positions is not None:
             # mask
@@ -109,7 +105,7 @@ if __name__ == '__main__':
     # Prepare model
     config = RobertaConfig.from_pretrained(str(params.bert_model_dir / 'config.json'), output_hidden_states=True)
     model = BertQueryNER.from_pretrained(str(params.bert_model_dir),
-                                             config=config, params=params)
+                                         config=config, params=params)
 
     for n, _ in model.named_parameters():
         print(n)

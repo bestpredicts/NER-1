@@ -5,13 +5,14 @@ import argparse
 import logging
 import os
 import random
+from tqdm import tqdm
 
 import torch
 
 import utils
 from utils import IO2QUERY
 from transformers import RobertaConfig, BertConfig
-from metrics_utils import mrc2bio
+from metrics_utils import pointer2bio
 from dataloader import MRCNERDataLoader
 from model import BertQueryNER
 
@@ -38,30 +39,27 @@ def predict(model, test_dataloader, params, mode):
     cate_idx2label = {idx: value for idx, value in enumerate(params.label_list)}
 
     # get data
-    for input_ids, input_mask, segment_ids, start_pos, end_pos, ner_cate in test_dataloader:
+    for batch in tqdm(test_dataloader, unit='Batch'):
         # to device
-        input_ids = input_ids.to(params.device)
-        input_mask = input_mask.to(params.device)
-        segment_ids = segment_ids.to(params.device)
-
+        batch = tuple(t.to(params.device) for t in batch)
+        input_ids, input_mask, segment_ids, _, _, ne_cate = batch
         # inference
         with torch.no_grad():
-            start_logits, end_logits = model(input_ids, segment_ids, input_mask)
+            start_logits, end_logits = model(input_ids, token_type_ids=segment_ids, attention_mask=input_mask)
 
         # predict label
         start_label = start_logits.detach().cpu().numpy().tolist()
         end_label = end_logits.detach().cpu().numpy().tolist()
         # mask
         input_mask = input_mask.to("cpu").detach().numpy().tolist()
-        ner_cate = ner_cate.to("cpu").numpy().tolist()
+        ne_cate = ne_cate.to("cpu").numpy().tolist()
 
         # get result
-        for start_p, end_p, ner_cate_s in zip(start_label, end_label,
-                                              ner_cate):
-            ner_cate_str = cate_idx2label[ner_cate_s]
-            pre_bio_labels = mrc2bio(start_p, end_p, ner_cate_str)
+        for start_p, end_p, ne_cate_s in zip(start_label, end_label, ne_cate):
+            ne_cate_str = cate_idx2label[ne_cate_s]
+            pre_bio_labels = pointer2bio(start_p, end_p, ne_cate=ne_cate_str)
             pre_result.append(pre_bio_labels)
-            cate_result.append(ner_cate_str)
+            cate_result.append(ne_cate_str)
 
         # save mask
         mask_lst += input_mask

@@ -15,10 +15,6 @@ class MRCNERDataLoader(object):
     """
 
     def __init__(self, params):
-        """
-        :param data_processor: get data_src examples.
-        :param mode: dataloader mode. 'train' or 'test'.
-        """
         self.params = params
 
         self.train_batch_size = params.train_batch_size
@@ -38,8 +34,8 @@ class MRCNERDataLoader(object):
         :param data_sign: 'train', 'val' or 'test'
         :return: features (List[InputFeatures]):
         """
-        print("Loading {} data...".format(data_sign))
         print("=*=" * 10)
+        print("Loading {} data...".format(data_sign))
 
         # 数据保存路径
         cache_path = os.path.join(self.data_dir, "mrc-ner.{}.cache.{}".format(data_sign, str(self.max_seq_length)))
@@ -79,9 +75,9 @@ class MRCNERDataLoader(object):
         end_pos = torch.tensor([f.end_position for f in features], dtype=torch.long)
         ner_cate = torch.tensor([f.ner_cate for f in features], dtype=torch.long)
         dataset = TensorDataset(input_ids, input_mask, segment_ids, start_pos, end_pos, ner_cate)
-
         print(f"{len(features)} {data_sign} data loaded!")
         print("=*=" * 10)
+
         if data_sign == "train":
             datasampler = RandomSampler(dataset)  # RandomSampler(dataset)
             dataloader = DataLoader(dataset, sampler=datasampler, batch_size=self.train_batch_size)

@@ -28,11 +28,6 @@ class InputExample(object):
                  start_position=None,
                  end_position=None,
                  ner_cate=None):
-        """
-        Desc:
-            is_impossible: bool, [True, False]
-        """
-
         self.query_item = query_item
         self.context_item = context_item
         self.start_position = start_position
@@ -45,8 +40,8 @@ class InputFeatures(object):
     Desc:
         a single set of features of data_src
     Args:
-        start_pos: start position is a list of symbol
-        end_pos: end position is a list of symbol
+        start_position: start position is a list of symbol
+        end_position: end position is a list of symbol
     """
 
     def __init__(self,
@@ -67,7 +62,7 @@ class InputFeatures(object):
 
 def read_mrc_ner_examples(input_file):
     """read MRC-NER data_src to InputExamples
-    :return examples (List[InputExample]):
+    :return examples (List[InputExample])
     """
     # read json file
     with open(input_file, "r", encoding='utf-8') as f:

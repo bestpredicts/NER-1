@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="" />
+    <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metrics_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +70,7 @@
       <workItem from="1596009780609" duration="1235000" />
       <workItem from="1596093681029" duration="53000" />
       <workItem from="1596096233798" duration="167000" />
+      <workItem from="1596423083710" duration="1131000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>

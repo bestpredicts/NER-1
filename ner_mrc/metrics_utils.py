@@ -3,7 +3,7 @@
 """mrc result to bio"""
 
 
-def mrc2bio(start_labels, end_labels, ner_cate):
+def pointer2bio(start_labels, end_labels, ne_cate):
     """convert (begin, end, span) label to bio label. for single sample.
     :return: bio_labels List[str]: 实体序列（单样本）
     """
@@ -16,7 +16,7 @@ def mrc2bio(start_labels, end_labels, ner_cate):
 
     # 打start标
     for start_item in start_labels:
-        bio_labels[start_item] = "B-{}".format(ner_cate)
+        bio_labels[start_item] = "B-{}".format(ne_cate)
 
     # 打I标
     for tmp_start in start_labels:
@@ -30,7 +30,7 @@ def mrc2bio(start_labels, end_labels, ner_cate):
         # 如果匹配则标记为实体
         if tmp_start != tmp_end:
             for i in range(tmp_start + 1, tmp_end + 1):
-                bio_labels[i] = "I-{}".format(ner_cate)
+                bio_labels[i] = "I-{}".format(ne_cate)
         # TODO:忽略单字实体
         else:
             bio_labels[tmp_end] = "O"

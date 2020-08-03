@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0c6cd672-a69c-493d-b978-a5f65ce0d082" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEZHA/model_nezha.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEZHA/model_nezha.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEZHA/tokenization.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEZHA/tokenization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middle_layer/r_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/middle_layer/r_transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="D:/Competitions/ner4med/nezha_lstm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ner_mrc" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -134,7 +127,7 @@
       <workItem from="1595938192988" duration="5000" />
       <workItem from="1595941186578" duration="1861000" />
       <workItem from="1596008144972" duration="5156000" />
-      <workItem from="1596421551574" duration="749000" />
+      <workItem from="1596421551574" duration="1455000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1594364122320</created>
@@ -227,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596013765409</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="最后修改">
+      <created>1596422337765</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596422337765</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +253,8 @@
     <MESSAGE value="修改val" />
     <MESSAGE value="修改evaluate.py" />
     <MESSAGE value="修改predict.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改predict.py" />
+    <MESSAGE value="最后修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="最后修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

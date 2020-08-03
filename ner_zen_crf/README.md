@@ -8,7 +8,9 @@
 
 **模型：**
 
-ZEN+middle layer+crf
+ZEN+middle layer+CRF
+
+ZEN: Pre-training Chinese Text Encoder Enhanced by N-gram Representations：https://arxiv.org/abs/1911.00720
 
 **方法的优势:** 
 

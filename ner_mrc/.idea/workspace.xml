@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/dataloader_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/metrics_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/metrics_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +23,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ner_zen_lstm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -72,7 +70,7 @@
       <workItem from="1596096233798" duration="167000" />
       <workItem from="1596423083710" duration="1201000" />
       <workItem from="1596424516479" duration="14000" />
-      <workItem from="1596424840607" duration="1302000" />
+      <workItem from="1596424840607" duration="1911000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>

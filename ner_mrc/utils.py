@@ -69,7 +69,7 @@ class Params:
         self.n_gpu = torch.cuda.device_count()
 
         self.train_batch_size = 64
-        self.dev_batch_size = 32
+        self.val_batch_size = 32
         self.test_batch_size = 128
 
         # patience策略

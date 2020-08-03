@@ -24,8 +24,6 @@ import os
 import logging
 import six
 
-
-
 logger = logging.getLogger(__name__)
 
 PRETRAINED_VOCAB_ARCHIVE_MAP = {
@@ -79,8 +77,6 @@ def printable_text(text):
     elif six.PY2:
         if isinstance(text, str):
             return text
-        elif isinstance(text, unicode):
-            return text.encode("utf-8")
         else:
             raise ValueError("Unsupported string type: %s" % (type(text)))
     else:
@@ -99,8 +95,6 @@ def convert_to_unicode(text):
     elif six.PY2:
         if isinstance(text, str):
             return text.decode("utf-8", "ignore")
-        elif isinstance(text, unicode):
-            return text
         else:
             raise ValueError("Unsupported string type: %s" % (type(text)))
     else:
@@ -141,39 +135,6 @@ class BertTokenizer(object):
         for i in ids:
             tokens.append(self.ids_to_tokens[i])
         return tokens
-
-    @classmethod
-    def from_pretrained(cls, pretrained_model_name, cache_dir=None, *inputs, **kwargs):
-        """
-        Instantiate a PreTrainedBertModel from a pre-trained model file.
-        Download and cache the pre-trained model file if needed.
-        """
-        if pretrained_model_name in PRETRAINED_VOCAB_ARCHIVE_MAP:
-            vocab_file = PRETRAINED_VOCAB_ARCHIVE_MAP[pretrained_model_name]
-        else:
-            vocab_file = pretrained_model_name
-        if os.path.isdir(vocab_file):
-            vocab_file = os.path.join(vocab_file, VOCAB_NAME)
-        # redirect to the cache, if necessary
-        try:
-            resolved_vocab_file = cached_path(vocab_file, cache_dir=cache_dir)
-        except FileNotFoundError:
-            logger.error(
-                "Model name '{}' was not found in model name list ({}). "
-                "We assumed '{}' was a path or url but couldn't find any file "
-                "associated to this path or url.".format(
-                    pretrained_model_name,
-                    ', '.join(PRETRAINED_VOCAB_ARCHIVE_MAP.keys()),
-                    vocab_file))
-            return None
-        if resolved_vocab_file == vocab_file:
-            logger.info("loading vocabulary file {}".format(vocab_file))
-        else:
-            logger.info("loading vocabulary file {} from cache at {}".format(
-                vocab_file, resolved_vocab_file))
-        # Instantiate tokenizer.
-        tokenizer = cls(resolved_vocab_file, *inputs, **kwargs)
-        return tokenizer
 
 
 class BasicTokenizer(object):

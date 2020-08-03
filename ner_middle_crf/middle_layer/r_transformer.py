@@ -259,6 +259,7 @@ class RTransformer(nn.Module):
         :return:
         """
         x = self.forward_net(x)
+        # TODO: mask方式
         x = x * mask.unsqueeze(-1)
         x = self.hidden2tag(x) * mask.unsqueeze(-1)  # (bs, seq_len, tag_size)
         return x

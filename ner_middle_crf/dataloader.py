@@ -19,7 +19,7 @@ class NERDataLoader(object):
         self.params = params
 
         self.train_batch_size = params.train_batch_size
-        self.val_batch_size = params.dev_batch_size
+        self.val_batch_size = params.val_batch_size
         self.test_batch_size = params.test_batch_size
 
         self.data_dir = params.data_dir
@@ -84,7 +84,7 @@ class NERDataLoader(object):
             dataloader = DataLoader(dataset, sampler=datasampler, batch_size=self.train_batch_size)
         elif data_sign == "val":
             datasampler = SequentialSampler(dataset)
-            dataloader = DataLoader(dataset, sampler=datasampler, batch_size=self.dev_batch_size)
+            dataloader = DataLoader(dataset, sampler=datasampler, batch_size=self.val_batch_size)
         elif data_sign == "test":
             datasampler = SequentialSampler(dataset)
             dataloader = DataLoader(dataset, sampler=datasampler, batch_size=self.test_batch_size)

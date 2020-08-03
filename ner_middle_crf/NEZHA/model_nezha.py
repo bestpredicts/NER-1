@@ -91,8 +91,7 @@ class BertConfig(object):
                 initializing all weight matrices.
             layer_norm_eps: The epsilon used by LayerNorm.
         """
-        if isinstance(vocab_size_or_config_json_file, str) or (sys.version_info[0] == 2
-                                                               and isinstance(vocab_size_or_config_json_file, unicode)):
+        if isinstance(vocab_size_or_config_json_file, str):
             with open(vocab_size_or_config_json_file, "r", encoding='utf-8') as reader:
                 json_config = json.loads(reader.read())
             for key, value in json_config.items():
@@ -420,7 +419,7 @@ class BertIntermediate(nn.Module):
     def __init__(self, config):
         super(BertIntermediate, self).__init__()
         self.dense = nn.Linear(config.hidden_size, config.intermediate_size)
-        if isinstance(config.hidden_act, str) or (sys.version_info[0] == 2 and isinstance(config.hidden_act, unicode)):
+        if isinstance(config.hidden_act, str) or (sys.version_info[0] == 2):
             self.intermediate_act_fn = ACT2FN[config.hidden_act]
         else:
             self.intermediate_act_fn = config.hidden_act
@@ -562,7 +561,7 @@ class BertPredictionHeadTransform(nn.Module):
         super(BertPredictionHeadTransform, self).__init__()
         # Need to unty it when we separate the dimensions of hidden and emb
         self.dense = nn.Linear(config.hidden_size, config.hidden_size)
-        if isinstance(config.hidden_act, str) or (sys.version_info[0] == 2 and isinstance(config.hidden_act, unicode)):
+        if isinstance(config.hidden_act, str) or (sys.version_info[0] == 2):
             self.transform_act_fn = ACT2FN[config.hidden_act]
         else:
             self.transform_act_fn = config.hidden_act

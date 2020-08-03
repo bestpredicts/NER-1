@@ -8,10 +8,6 @@ class InputExample(object):
     """
 
     def __init__(self, sentence, tags):
-        """
-        Desc:
-            is_impossible: bool, [True, False]
-        """
         self.sentence = sentence
         self.tags = tags
 
@@ -20,9 +16,6 @@ class InputFeatures(object):
     """
     Desc:
         a single set of features of data_src
-    Args:
-        start_pos: start position is a list of symbol
-        end_pos: end position is a list of symbol
     """
 
     def __init__(self,
@@ -39,7 +32,7 @@ class InputFeatures(object):
 
 def read_examples(data_dir, data_sign):
     """read BIO-NER data_src to InputExamples
-    :return examples (List[InputExample]):
+    :return examples (List[InputExample])
     """
     examples = []
     # read src data

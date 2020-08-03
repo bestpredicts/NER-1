@@ -36,11 +36,10 @@ def predict(model, test_dataloader, params, mode):
     cate_idx2label = {idx: int(idx + 1) for idx, _ in enumerate(params.label_list)}
 
     # get data
-    for input_ids, input_mask, start_pos, end_pos in test_dataloader:
+    for batch in test_dataloader:
         # to device
-        input_ids = input_ids.to(params.device)
-        input_mask = input_mask.to(params.device)
-
+        batch = tuple(t.to(params.device) for t in batch)
+        input_ids, input_mask, start_pos, end_pos = batch
         # inference
         with torch.no_grad():
             start_logits, end_logits = model(input_ids, attention_mask=input_mask)
@@ -52,21 +51,19 @@ def predict(model, test_dataloader, params, mode):
         input_mask = input_mask.to("cpu").detach().numpy().tolist()
 
         # get result
-        for start_p_b, end_p_b in zip(start_label, end_label):
-            for idx, (start_p, end_p) in enumerate(zip(start_p_b, end_p_b)):
-                pre_bio_labels = pointer2bio(start_p, end_p, cate_idx2label[idx])
+        for start_p_s, end_p_s, input_mask_s in zip(start_label, end_label, input_mask):
+            # 有效长度
+            act_len = sum(input_mask_s)
+            for idx, (start_p, end_p) in enumerate(zip(start_p_s, end_p_s)):
+                pre_bio_labels = pointer2bio(start_p[:act_len], end_p[:act_len],
+                                             ne_cate=cate_idx2label[idx])
                 pre_result.append(pre_bio_labels)
-
-        # save mask
-        mask_lst += input_mask
 
     # write to file
     with open(params.data_dir / f'{mode}_tags_pre.txt', 'w', encoding='utf-8') as file_tags:
         for idx, tag in enumerate(pre_result):
-            # 有效长度
-            act_len = sum(mask_lst[idx // len(params.label_list)])
             # 真实标签
-            file_tags.write('{}\n'.format(' '.join(tag[:act_len])))
+            file_tags.write('{}\n'.format(' '.join(tag)))
 
 
 if __name__ == '__main__':
@@ -104,6 +101,8 @@ if __name__ == '__main__':
     # Create the input data pipeline
     logging.info("Loading the dataset...")
     loader = dataloader.get_dataloader(data_sign=mode)
+    logging.info('-done')
 
     logging.info("Starting prediction...")
     predict(model, loader, params, mode)
+    logging.info('-done')

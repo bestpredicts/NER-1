@@ -91,7 +91,7 @@ def train_and_evaluate(model, params, restore_file=None):
     # pretrain model param
     param_pre = [(n, p) for n, p in param_optimizer if 'bert' in n]
     # middle model param
-    param_middle = [(n, p) for n, p in param_optimizer if 'bilstm' in n]
+    # param_middle = [(n, p) for n, p in param_optimizer if 'bilstm' in n]
     # last param
     param_last = [p for n, p in param_optimizer if 'start_outputs' in n or 'end_outputs' in n]
     # 不进行衰减的权重
@@ -101,24 +101,24 @@ def train_and_evaluate(model, params, restore_file=None):
         # pretrain model param
         # 衰减
         {'params': [p for n, p in param_pre if not any(nd in n for nd in no_decay)],
-         'weight_decay_rate': params.weight_decay_rate, 'lr': params.fin_tuning_lr
+         'weight_decay': params.weight_decay_rate, 'lr': params.fin_tuning_lr
          },
         # 不衰减
         {'params': [p for n, p in param_pre if any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.0, 'lr': params.fin_tuning_lr
+         'weight_decay': 0.0, 'lr': params.fin_tuning_lr
          },
         # middle model
         # 衰减
-        {'params': [p for n, p in param_middle if not any(nd in n for nd in no_decay)],
-         'weight_decay_rate': params.weight_decay_rate, 'lr': params.middle_lr
-         },
+        # {'params': [p for n, p in param_middle if not any(nd in n for nd in no_decay)],
+        #  'weight_decay': params.weight_decay_rate, 'lr': params.middle_lr
+        #  },
         # 不衰减
-        {'params': [p for n, p in param_middle if any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.0, 'lr': params.middle_lr
-         },
+        # {'params': [p for n, p in param_middle if any(nd in n for nd in no_decay)],
+        #  'weight_decay': 0.0, 'lr': params.middle_lr
+        #  },
         # 单独设置学习率
         {'params': param_last,
-         'weight_decay_rate': 0.0, 'lr': params.last_lr}
+         'weight_decay': 0.0, 'lr': params.last_lr}
     ]
     num_train_optimization_steps = len(train_loader) // params.gradient_accumulation_steps * args.epoch_num
     optimizer = BertAdam(optimizer_grouped_parameters, warmup=params.warmup_prop, schedule="warmup_cosine",

@@ -105,14 +105,7 @@ def convert_examples_to_features(params, examples, tokenizer, pad_sign=True):
 
         # 获取文本tokens
         # 标签为空的样本
-        if len(example.start_position) == 0 and len(example.end_position) == 0:
-            context_doc_tokens = []
-            # gold label全部为零
-            for token_item in context_doc:
-                tmp_subword_lst = tokenizer.tokenize(token_item)
-                context_doc_tokens.extend(tmp_subword_lst)
-        # 标签不为空的样本
-        else:
+        if len(example.start_position) != 0 and len(example.end_position) != 0:
             # get gold label
             for idx, enti_label in enumerate(example.enti_type):
                 label_id = tag2idx[enti_label]
@@ -121,19 +114,19 @@ def convert_examples_to_features(params, examples, tokenizer, pad_sign=True):
                         start_label[label_id][start_item] = 1
                         end_label[label_id][end_item] = 1
 
-            # get context_tokens
-            context_doc_tokens = []
-            for token in context_doc:
-                # tokenize
-                tmp_subword_lst = tokenizer.tokenize(token)
-                if len(tmp_subword_lst) == 1:
-                    context_doc_tokens.extend(tmp_subword_lst)  # context len
-                else:
-                    raise ValueError("Please check the result of tokenizer!!!")
+        # get context_tokens
+        context_doc_tokens = []
+        for token in context_doc:
+            # tokenize
+            tmp_subword_lst = tokenizer.tokenize(token)
+            if len(tmp_subword_lst) == 1:
+                context_doc_tokens.extend(tmp_subword_lst)  # context len
+            else:
+                raise ValueError("Please check the result of tokenizer!!!")
 
         # cut off
         if len(context_doc_tokens) > max_len:
-            context_doc_tokens = context_doc_tokens[: max_len]
+            context_doc_tokens = context_doc_tokens[:max_len]
 
         # input_mask:
         #   the mask has 1 for real tokens and 0 for padding tokens.

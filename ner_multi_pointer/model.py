@@ -50,13 +50,13 @@ class BiLSTM(nn.Module):
 class BertMultiPointer(BertPreTrainedModel):
     def __init__(self, config, params):
         super(BertMultiPointer, self).__init__(config)
-        # bert layer
+        # pretrain model layer
         self.bert = RobertaModel(config)
         self.tag_size = len(params.label_list)
 
         # lstm
-        self.bilstm = BiLSTM(embedding_size=config.hidden_size, hidden_size=params.lstm_hid,
-                             num_layers=params.lstm_layers, dropout=params.dropout)
+        # self.bilstm = BiLSTM(embedding_size=config.hidden_size, hidden_size=params.lstm_hid,
+        #                      num_layers=params.lstm_layers, dropout=params.dropout)
 
         # start and end position layer
         self.start_outputs = nn.Linear(config.hidden_size, self.tag_size)
@@ -91,7 +91,7 @@ class BertMultiPointer(BertPreTrainedModel):
         return sequence_output
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, position_ids=None,
-                head_mask=None, start_positions=None, end_positions=None):
+                start_positions=None, end_positions=None):
         """
         Args:
             start_positions: (batch x max_len x tag_size)
@@ -102,16 +102,15 @@ class BertMultiPointer(BertPreTrainedModel):
             input_ids,
             attention_mask=attention_mask,
             token_type_ids=token_type_ids,
-            position_ids=position_ids,
-            head_mask=head_mask,
+            position_ids=position_ids
         )  # sequence_output, pooled_output, (hidden_states), (attentions)
 
         # BERT融合
         sequence_output = self.get_dym_layer(outputs)  # (batch_size, seq_len, hidden_size[embedding_dim])
 
         # lstm
-        sequence_output = self.bilstm.get_lstm_features(sequence_output.transpose(1, 0),
-                                                        attention_mask.transpose(1, 0)).transpose(1, 0)
+        # sequence_output = self.bilstm.get_lstm_features(sequence_output.transpose(1, 0),
+        #                                                 attention_mask.transpose(1, 0)).transpose(1, 0)
         batch_size, seq_len, hid_size = sequence_output.size()
 
         # get logits

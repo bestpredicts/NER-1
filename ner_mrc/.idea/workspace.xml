@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metrics_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/dataloader_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/metrics_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/metrics_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +69,9 @@
       <workItem from="1596009780609" duration="1235000" />
       <workItem from="1596093681029" duration="53000" />
       <workItem from="1596096233798" duration="167000" />
-      <workItem from="1596423083710" duration="1131000" />
+      <workItem from="1596423083710" duration="1201000" />
+      <workItem from="1596424516479" duration="14000" />
+      <workItem from="1596424840607" duration="1302000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>
@@ -128,7 +129,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596096373206</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="final change">
+      <created>1596424234355</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596424234355</updated>
+    </task>
+    <task id="LOCAL-00010" summary="final change">
+      <created>1596424267066</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596424267066</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +169,7 @@
     <MESSAGE value="修改weight_decay" />
     <MESSAGE value="修改dataloader" />
     <MESSAGE value="修改evaluate" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改evaluate" />
+    <MESSAGE value="final change" />
+    <option name="LAST_COMMIT_MESSAGE" value="final change" />
   </component>
 </project>

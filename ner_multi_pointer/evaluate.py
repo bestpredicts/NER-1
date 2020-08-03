@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """evaluate"""
 import logging
+from tqdm import tqdm
 
 import torch
 
@@ -19,7 +20,7 @@ def evaluate(args, model, eval_dataloader, params):
     gold_result = []
 
     # get data
-    for batch in eval_dataloader:
+    for batch in tqdm(eval_dataloader, unit='Batch'):
         # fetch the next training batch
         batch = tuple(t.to(params.device) for t in batch)
         input_ids, input_mask, start_pos, end_pos = batch
@@ -40,6 +41,7 @@ def evaluate(args, model, eval_dataloader, params):
         # gold label
         start_pos = start_pos.to("cpu").numpy().transpose((0, 2, 1)).tolist()  # (batch_size, tag_size, seq_len)
         end_pos = end_pos.to("cpu").numpy().transpose((0, 2, 1)).tolist()
+        input_mask = input_mask.to('cpu').numpy().tolist()
 
         # predict label
         start_label = start_pre.detach().cpu().numpy().transpose((0, 2, 1)).tolist()
@@ -49,12 +51,16 @@ def evaluate(args, model, eval_dataloader, params):
         cate_idx2label = {idx: value for idx, value in enumerate(params.label_list)}
 
         # get bio result
-        for start_p_b, end_p_b, start_g_b, end_g_b in zip(start_label, end_label,
-                                                          start_pos, end_pos):
-            for idx, (start_p, end_p, start_g, end_g) in enumerate(zip(start_p_b,
-                                                                       end_p_b, start_g_b, end_g_b)):
-                pre_bio_labels = pointer2bio(start_p, end_p, cate_idx2label[idx])
-                gold_bio_labels = pointer2bio(start_g, end_g, cate_idx2label[idx])
+        for start_p_s, end_p_s, start_g_s, end_g_s, input_mask_s in zip(start_label, end_label,
+                                                                        start_pos, end_pos, input_mask):
+            # 有效长度
+            act_len = sum(input_mask_s)
+            for idx, (start_p, end_p, start_g, end_g) in enumerate(zip(start_p_s,
+                                                                       end_p_s, start_g_s, end_g_s)):
+                pre_bio_labels = pointer2bio(start_p[:act_len], end_p[:act_len],
+                                             ne_cate=cate_idx2label[idx])
+                gold_bio_labels = pointer2bio(start_g[:act_len], end_g[:act_len],
+                                              ne_cate=cate_idx2label[idx])
                 pre_result.append(pre_bio_labels)
                 gold_result.append(gold_bio_labels)
 
@@ -70,22 +76,4 @@ def evaluate(args, model, eval_dataloader, params):
     report = classification_report(y_true=gold_result, y_pred=pre_result)
     logging.info(report)
 
-    return f1
-
-
-if __name__ == '__main__':
-    from transformers import RobertaConfig
-    from model import BertMultiPointer
-    from utils import Params
-    from dataloader import MRCNERDataLoader
-
-    # 设置模型使用的gpu
-    torch.cuda.set_device(2)
-    params = Params()
-    dataloader = MRCNERDataLoader(params)
-    config = RobertaConfig.from_pretrained(str(params.bert_model_dir / 'config.json'), output_hidden_states=True)
-    model = BertMultiPointer.from_pretrained(str(params.bert_model_dir),
-                                             config=config, params=params)
-    model.to(params.device)
-    dev_loader, _ = dataloader.load_data(mode='test')
-    val_f1 = evaluate(model, dev_loader, params)
+    return metrics

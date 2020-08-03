@@ -1,6 +1,6 @@
 # /usr/bin/env python
 # coding=utf-8
-"""mrc dataloader"""
+"""dataloader"""
 
 import os
 import torch
@@ -22,7 +22,7 @@ class MRCNERDataLoader(object):
         self.params = params
 
         self.train_batch_size = params.train_batch_size
-        self.dev_batch_size = params.dev_batch_size
+        self.val_batch_size = params.val_batch_size
         self.test_batch_size = params.test_batch_size
 
         self.data_dir = params.data_dir
@@ -38,11 +38,11 @@ class MRCNERDataLoader(object):
         :param data_sign: 'train', 'val' or 'test'
         :return: features (List[InputFeatures]):
         """
-        print("Loading {} data...".format(data_sign))
         print("=*=" * 10)
+        print("Loading {} data...".format(data_sign))
 
         # 数据保存路径
-        cache_path = os.path.join(self.data_dir, "mrc-ner.{}.cache.{}".format(data_sign, str(self.max_seq_length)))
+        cache_path = os.path.join(self.data_dir, "{}.cache.{}".format(data_sign, str(self.max_seq_length)))
         # 读取数据
         if os.path.exists(cache_path) and self.data_cache:
             features = torch.load(cache_path)
@@ -65,7 +65,6 @@ class MRCNERDataLoader(object):
     def get_dataloader(self, data_sign="train"):
         """construct dataloader
         :param data_sign: 'train', 'val' or 'test'
-        :return:
         """
         # InputExamples to InputFeatures
         features = self.convert_examples_to_features(data_sign=data_sign)

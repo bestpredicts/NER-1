@@ -6,6 +6,7 @@ import argparse
 import random
 import logging
 import os
+from tqdm import tqdm
 
 import torch
 
@@ -33,11 +34,10 @@ def predict(model, data_iterator, params, mode):
 
     pred_tags = []
 
-    for batch in data_iterator:
+    for batch in tqdm(data_iterator, unit='Batch'):
         # to device
         batch = tuple(t.to(params.device) for t in batch)
-        input_ids, input_mask, labels, ngram_ids, ngram_positions, ngram_masks = batch
-        batch_size, max_len = labels.size()
+        input_ids, input_mask, _, ngram_ids, ngram_positions, ngram_masks = batch
         # inference
         with torch.no_grad():
             # inference
@@ -70,9 +70,6 @@ if __name__ == '__main__':
     # Set the logger
     utils.set_logger()
 
-    # get dataloader
-    dataloader = NERDataLoader(params)
-
     # Define the model
     logging.info('Loading the model...')
     model = BertForTokenClassification.from_pretrained(params.bert_model_dir, params=params)
@@ -81,9 +78,13 @@ if __name__ == '__main__':
     utils.load_checkpoint(os.path.join(params.model_dir, args.restore_file + '.pth.tar'), model)
     logging.info('- done.')
 
+    logging.info("Loading the dataset...")
+    # get dataloader
+    dataloader = NERDataLoader(params)
+    loader = dataloader.get_dataloader(data_sign=mode)
+    logging.info('-done')
+
     logging.info("Starting prediction...")
     # Create the input data pipeline
-    logging.info("Loading the dataset...")
-    loader = dataloader.get_dataloader(data_sign=mode)
     predict(model, loader, params, mode)
-
+    logging.info('-done')

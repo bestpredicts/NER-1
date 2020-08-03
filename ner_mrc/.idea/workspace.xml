@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/postprocess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_multi_pointer/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_multi_pointer/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

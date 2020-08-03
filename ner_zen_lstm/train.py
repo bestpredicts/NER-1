@@ -1,6 +1,10 @@
 # -!- coding: utf-8 -!-
 """train with valid"""
 import random
+import os
+
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 
 import torch
 from optimization import BertAdam
@@ -25,9 +29,6 @@ parser.add_argument('--restore_file', default=None,
 parser.add_argument('--epoch_num', required=True, type=int,
                     help="指定epoch_num")
 parser.add_argument('--multi_gpu', action='store_true', help="是否多GPU")
-
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 
 
 def train(model, data_iterator, optimizer, params):
@@ -68,8 +69,6 @@ def train(model, data_iterator, optimizer, params):
         if params.gradient_accumulation_steps > 1:
             loss = loss / params.gradient_accumulation_steps
 
-        # clear previous gradients, compute gradients of all variables wrt loss
-        model.zero_grad()
         # back-prop
         loss.backward()
 
@@ -222,7 +221,7 @@ if __name__ == '__main__':
 
     # Set the logger
     utils.set_logger(save=True, log_path=os.path.join(params.params_path, 'train.log'))
-    logging.info("Model type: ner-zen")
+    logging.info("Model type: ")
     logging.info("device: {}".format(params.device))
 
     logging.info('Init pre-train model...')

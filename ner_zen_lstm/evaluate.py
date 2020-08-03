@@ -2,6 +2,7 @@
 # coding=utf-8
 """Evaluate the model"""
 import logging
+from tqdm import tqdm
 
 import torch
 
@@ -23,7 +24,7 @@ def evaluate(args, model, data_iterator, params, mark='Val', verbose=True):
 
     # a running average object for loss
     loss_avg = utils.RunningAverage()
-    for batch in data_iterator:
+    for batch in tqdm(data_iterator, unit='Batch'):
         # to device
         batch = tuple(t.to(params.device) for t in batch)
         input_ids, input_mask, labels, ngram_ids, ngram_positions, ngram_masks = batch

@@ -7,10 +7,12 @@ import json
 import re
 import random
 import logging
+from multiprocessing import Pool
+import functools
 
 from utils import ENTI_DICT, set_logger
 
-SRC_DATA_DIR = Path('../ccks 4_1 Data')
+SRC_DATA_DIR = Path('../data_src')
 DATA_DIR = Path('./')
 
 
@@ -53,27 +55,24 @@ def filter_chars(text):
     return text
 
 
-def merge_label(content):
+def merge_label(s, content):
     """将文本相同的数据标签合并
     """
-    result = []
-    for s in content:
-        # init
-        tmp = [s[0], s[1], [s[2]], [[s[3]]]]
-        # 文本相同则合并标签
-        for compare in content:
-            # 如果文本相同，且非自身，且类别不存在
-            if s[1] == compare[1] and s[0] != compare[0] and compare[2] not in tmp[2]:
-                tmp[2].append(compare[2])
-                tmp[3].append([compare[3]])
-            # 如果文本相同，且非自身，且类别已存在
-            elif s[1] == compare[1] and s[0] != compare[0] and compare[2] in tmp[2]:
-                # 获取对应位置
-                idx = tmp[2].index(compare[2])
-                # 将实体加入已有位置
-                tmp[3][idx].append(compare[3])
-        result.append(tmp)
-    return result
+    # init
+    tmp = [s[0], s[1], [s[2]], [[s[3]]]]
+    # 文本相同则合并标签
+    for compare in content:
+        # 如果文本相同，且非自身，且类别不存在
+        if s[1] == compare[1] and s[0] != compare[0] and compare[2] not in tmp[2]:
+            tmp[2].append(compare[2])
+            tmp[3].append([compare[3]])
+        # 如果文本相同，且非自身，且类别已存在
+        elif s[1] == compare[1] and s[0] != compare[0] and compare[2] in tmp[2]:
+            # 获取对应位置
+            idx = tmp[2].index(compare[2])
+            # 将实体加入已有位置
+            tmp[3][idx].append(compare[3])
+    return tmp
 
 
 def src2json():
@@ -89,8 +88,12 @@ def src2json():
         content = [c for c in content if c[2] != 'NaN' and c[3] != 'NaN']
 
         logging.info('Merge label...')
-        # 合并文本相同的数据
-        content = merge_label(content)
+        # 多进程
+        with Pool() as p:
+            merge_label_func = functools.partial(merge_label, content=content)
+            # 合并文本相同的数据
+            # content = merge_label(content)
+            content = p.map(func=merge_label_func, iterable=content)
         logging.info('-done')
 
         logging.info('Write train set to json file...')
@@ -221,7 +224,7 @@ def get_testset():
 if __name__ == '__main__':
     set_logger(save=False)
     # src data to json
-    # src2json()
+    src2json()
     # convert json to bio
-    # convert2bio()
+    convert2bio()
     get_testset()

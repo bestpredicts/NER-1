@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0c6cd672-a69c-493d-b978-a5f65ce0d082" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_mrc/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ner_middle_crf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ner_middle_crf.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analyze.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analyze.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,10 +43,18 @@
   </component>
   <component name="ProjectId" id="1e4KopM0uIwCoTSdJKAZum4wWGF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -40,18 +63,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\my_demo\ner\ner_middle_crf" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.data_analyze">
     <configuration name="data_analyze" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -68,6 +79,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_analyze.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="preprocess" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ner_middle_crf" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/preprocess.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,6 +134,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.data_analyze" />
+        <item itemvalue="Python.preprocess" />
         <item itemvalue="Python.tt" />
       </list>
     </recent_temporary>
@@ -135,6 +169,9 @@
       <workItem from="1596008144972" duration="5156000" />
       <workItem from="1596421551574" duration="1455000" />
       <workItem from="1596437185508" duration="552000" />
+      <workItem from="1597223799272" duration="5197000" />
+      <workItem from="1597305154334" duration="32000" />
+      <workItem from="1597319639609" duration="123000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1594364122320</created>
@@ -238,20 +275,19 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改梯度累加" />
@@ -263,19 +299,39 @@
     <MESSAGE value="最后修改" />
     <option name="LAST_COMMIT_MESSAGE" value="最后修改" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data/preprocess.py</url>
-          <line>3</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state x="1162" y="562" key="#Notifications" timestamp="1597224846221">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1162" y="562" key="#Notifications/0.0.2560.1400@0.0.2560.1400" timestamp="1597224846221" />
+    <state x="976" y="291" key="#preprocess" timestamp="1597223822406">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="976" y="291" key="#preprocess/0.0.2560.1400@0.0.2560.1400" timestamp="1597223822406" />
+    <state width="2517" height="401" key="GridCell.Tab.0.bottom" timestamp="1597305185977">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="401" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1597305185977" />
+    <state width="2517" height="401" key="GridCell.Tab.0.center" timestamp="1597305185977">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="401" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1597305185977" />
+    <state width="2517" height="401" key="GridCell.Tab.0.left" timestamp="1597305185977">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="401" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1597305185977" />
+    <state width="2517" height="401" key="GridCell.Tab.0.right" timestamp="1597305185977">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="401" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1597305185977" />
+    <state x="781" y="344" key="SettingsEditor" timestamp="1597319762156">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="344" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1597319762156" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ner_middle_crf$data_analyze.coverage" NAME="data_analyze Coverage Results" MODIFIED="1594551488519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ner_middle_crf$tt.coverage" NAME="tt Coverage Results" MODIFIED="1594027481304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ner_middle_crf$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1597230288893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
+    <SUITE FILE_PATH="coverage/ner_middle_crf$tt.coverage" NAME="tt Coverage Results" MODIFIED="1597230082428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ner_middle_crf$data_analyze.coverage" NAME="data_analyze Coverage Results" MODIFIED="1597305168930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

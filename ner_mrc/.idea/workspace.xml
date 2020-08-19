@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e6bfee-64b8-43be-a220-3be610e8838f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/dataloader_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/middle_layer/r_transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ner_zen_lstm/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_zen_lstm/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ner_middle_crf/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,9 +14,16 @@
   </component>
   <component name="ProjectId" id="1e4PnFrqmHKwmaiy3EN6VCl077G" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ner_zen_lstm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -32,18 +32,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\my_demo\ner\ner_mrc" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -71,6 +59,7 @@
       <workItem from="1596423083710" duration="1201000" />
       <workItem from="1596424516479" duration="14000" />
       <workItem from="1596424840607" duration="1911000" />
+      <workItem from="1597370336884" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="修改梯度累加">
       <created>1595662345150</created>
@@ -146,20 +135,19 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改梯度累加" />

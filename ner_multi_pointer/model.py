@@ -66,9 +66,6 @@ class BertMultiPointer(BertPreTrainedModel):
         self.dym_weight = nn.Parameter(torch.ones((config.num_hidden_layers, 1, 1, 1)),
                                        requires_grad=True)
 
-        # loss weight
-        self.loss_wb = params.weight_start
-        self.loss_we = params.weight_end
         self.threshold = params.multi_threshold
 
         self.init_weights()
@@ -108,49 +105,36 @@ class BertMultiPointer(BertPreTrainedModel):
         # BERT融合
         sequence_output = self.get_dym_layer(outputs)  # (batch_size, seq_len, hidden_size[embedding_dim])
 
-        # lstm
-        # sequence_output = self.bilstm.get_lstm_features(sequence_output.transpose(1, 0),
-        #                                                 attention_mask.transpose(1, 0)).transpose(1, 0)
         batch_size, seq_len, hid_size = sequence_output.size()
 
         # get logits
         start_logits = self.start_outputs(sequence_output)  # batch x seq_len x tag_size
         end_logits = self.end_outputs(sequence_output)  # batch x seq_len x tag_size
 
-        # expand mask
-        expand_mask = attention_mask.unsqueeze(-1).expand(-1, -1, self.tag_size)  # (batch_size, seq_len , tag_size)
-        # mask
-        start_logits = torch.where(expand_mask == 0,
-                                   torch.full(size=expand_mask.size(), fill_value=-10000),
-                                   start_logits
-                                   )
-        end_logits = torch.where(expand_mask == 0,
-                                 torch.full(size=expand_mask.size(), fill_value=-10000),
-                                 end_logits
-                                 )
-
         # train
         if start_positions is not None and end_positions is not None:
             # s & e loss
             # weight = torch.tensor([2e3]*(self.tag_size*seq_len), device=self.device)
-            loss_fct = nn.BCEWithLogitsLoss()
+            loss_fct = nn.BCEWithLogitsLoss(reduction='none')
             start_loss = loss_fct(start_logits.view(batch_size, -1), start_positions.view(batch_size, -1).float())
             end_loss = loss_fct(end_logits.view(batch_size, -1), end_positions.view(batch_size, -1).float())
 
-            # total loss
-            total_loss = self.loss_wb * start_loss + self.loss_we * end_loss
+            # mask loss
+            total_loss = torch.sum((start_loss + end_loss).view(batch_size, seq_len, self.tag_size) *
+                                   attention_mask.unsqueeze(-1).expand(batch_size, seq_len, self.tag_size))
+            # calculate the average
+            total_loss /= torch.sum(attention_mask) * self.tag_size
             return total_loss
         # inference
         else:
             start_pre = torch.sigmoid(start_logits)  # batch x seq_len x tag_size
             end_pre = torch.sigmoid(end_logits)
+
             # get output
-            start_pre = torch.where(start_pre > self.threshold,
-                                    torch.ones(start_pre.size(), device=start_pre.device),
-                                    torch.zeros(start_pre.size(), device=start_pre.device))
-            end_pre = torch.where(end_pre > self.threshold,
-                                  torch.ones(start_pre.size(), device=start_pre.device),
-                                  torch.zeros(start_pre.size(), device=start_pre.device))
+            tensor_ones = torch.ones(start_pre.size(), device=start_pre.device)
+            tensor_zeros = torch.zeros(start_pre.size(), device=start_pre.device)
+            start_pre = torch.where(start_pre > self.threshold, tensor_ones, tensor_zeros)
+            end_pre = torch.where(end_pre > self.threshold, tensor_ones, tensor_zeros)
             return start_pre, end_pre
 
 

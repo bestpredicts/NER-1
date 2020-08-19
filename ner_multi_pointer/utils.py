@@ -61,12 +61,6 @@ class Params:
         self.warmup_prop = 0.1
         self.gradient_accumulation_steps = 2
 
-        # 下游参数
-        self.lstm_hid = 128
-        self.lstm_layers = 1
-        self.weight_start = 1.
-        self.weight_end = 1.
-
     def get(self):
         """Gives dict-like access to Params instance by `params.show['learning_rate']"""
         return self.__dict__
